@@ -14,11 +14,14 @@ if (isset($_POST['search'])) {
     $query_contains->execute(['%' . $search . '%', $search . '%']);
     $resultats_contains = $query_contains->fetchAll(PDO::FETCH_ASSOC);
 
-    echo '<ul>';
+    echo '<ul class="list-group">';
+    
     // Résultats exacts
     if (count($resultats_exact) > 0) {
         foreach ($resultats_exact as $resultat) {
-            echo '<li>' . $resultat['nom'] . '</li>';
+            echo '<li class="list-group-item">';
+            echo '<a href="recherche.php?search=' . urlencode($resultat['nom']) . '" class="text-decoration-none">' . htmlspecialchars($resultat['nom']) . '</a>';
+            echo '</li>';
         }
         echo '<hr>';
     }
@@ -26,7 +29,9 @@ if (isset($_POST['search'])) {
     // Résultats contenant la recherche
     if (count($resultats_contains) > 0) {
         foreach ($resultats_contains as $resultat) {
-            echo '<li>' . $resultat['nom'] . '</li>';
+            echo '<li class="list-group-item">';
+            echo '<a href="recherche.php?search=' . urlencode($resultat['nom']) . '" class="text-decoration-none">' . htmlspecialchars($resultat['nom']) . '</a>';
+            echo '</li>';
         }
     }
 
