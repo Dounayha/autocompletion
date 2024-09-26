@@ -4,11 +4,8 @@
     <title>Recherche</title>
 </head>
 <body>
-    <h1>Recherche</h1>
-    <form action="recherche.php" method="GET">
-        <input type="text" name="search" id="search" autocomplete="off" placeholder="Recherchez un élément...">
-        <input type="submit" value="Rechercher">
-    </form>
+<?php include '_header.php'; ?>
+    
 
     <ul id="suggestions"></ul>
 
