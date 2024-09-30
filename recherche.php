@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $animal ? htmlspecialchars($animal['nom']) : 'Aucun animal trouvé'; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/recherche.css">
 </head>
 <body>
     <div class="container mt-4">

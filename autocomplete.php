@@ -19,8 +19,7 @@ if (isset($_POST['search'])) {
     // Résultats exacts
     if (count($resultats_exact) > 0) {
         foreach ($resultats_exact as $resultat) {
-            echo '<li class="list-group-item">';
-            // Utilisation de l'ID pour rediriger vers la page de l'animal
+            echo '<li class="list-group-item" data-photo-url="' . htmlspecialchars($resultat['photo_url']) . '">'; // Stocker l'URL de l'image
             echo '<a href="recherche.php?id=' . htmlspecialchars($resultat['id']) . '" class="text-decoration-none">';
             echo htmlspecialchars($resultat['nom']);
             echo '</a>';
@@ -32,8 +31,7 @@ if (isset($_POST['search'])) {
     // Résultats contenant la recherche
     if (count($resultats_contains) > 0) {
         foreach ($resultats_contains as $resultat) {
-            echo '<li class="list-group-item">';
-            // Utilisation de l'ID pour rediriger vers la page de l'animal
+            echo '<li class="list-group-item" data-photo-url="' . htmlspecialchars($resultat['photo_url']) . '">'; // Stocker l'URL de l'image
             echo '<a href="recherche.php?id=' . htmlspecialchars($resultat['id']) . '" class="text-decoration-none">';
             echo htmlspecialchars($resultat['nom']);
             echo '</a>';
