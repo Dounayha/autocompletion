@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
                     <p><?php echo htmlspecialchars($animal['description']); ?></p>
                 </li>
                 <li class="list-group-item">
-                    <img src="<?php echo htmlspecialchars($animal['photo_url']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>" style="width: 100px;">
+                    <img src="<?php echo htmlspecialchars($animal['photo_url']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>" style="width: 300px;">
                 </li>
             </ul>
         <?php else: ?>

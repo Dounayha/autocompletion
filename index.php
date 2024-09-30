@@ -5,44 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche d'animaux</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/index.css">
 </head>
 <?php
 include '_header.php'
 ?>
-<style>
-    #animal-image {
-        width: 250px;  
-        height: 250px; 
-        object-fit: cover; 
-        display: none;
-    }
-</style>
-<body>
-    <div class="container mt-4">
-        <h1 class="text-center">Recherche d'animaux</h1>
 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="input-group">
-                    <!-- Barre de recherche -->
-                    <input type="text" id="search" class="form-control" placeholder="Rechercher un animal">
-                    
-                    <!-- Bouton Rechercher -->
-                    <button id="search-btn" class="btn btn-primary">Rechercher</button>
-                </div>
-                <ul id="suggestions" class="list-group mt-3"></ul>
-            </div>
-            
-            <!-- Colonne pour l'image -->
-            <div class="col-md-4">
-                <img id="animal-image" src="" alt="Image de l'animal" class="img-fluid" style="display:none; max-width: 100%;">
-            </div>
+<body>
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col text-center">
+            <h1>Recherche d'animaux</h1>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="input-group">
+                <!-- Barre de recherche -->
+                <input type="text" id="search" class="form-control" placeholder="Rechercher un animal">
+                
+                <!-- Bouton Rechercher -->
+                <button id="search-btn" class="btn btn-primary">Rechercher</button>
+            </div>
+            <ul id="suggestions" class="list-group mt-3"></ul>
+        </div>
+        
+        <!-- Colonne pour l'image -->
+        <div class="col-md-4">
+            <img id="animal-image" src="" alt="Image de l'animal" class="img-fluid" style="display:none; max-width: 100%;">
+        </div>
+    </div>
+</div>
 
     <script>
-        // Fonction pour la recherche (soit avec input soit avec le bouton)
-        // Fonction pour la recherche (soit avec input soit avec le bouton)
+        
 function searchAnimal() {
     let query = document.getElementById('search').value;
 

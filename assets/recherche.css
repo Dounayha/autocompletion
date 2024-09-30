@@ -1,42 +1,37 @@
 body {
-    background-color: #f5f5dc; /* Fond beige */
-    font-family: 'Arial', sans-serif; /* Police générale */
+    background-color: #EDE8D5;
+    font-family: 'Arial', sans-serif; 
 }
 
 .container {
-    max-width: 800px; /* Limiter la largeur de la page */
+    max-width: 800px; 
     margin-top: 50px;
 }
 
 .animal-card {
-    display: flex; /* Flexbox pour aligner l'image et le texte */
+    display: flex; 
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour la carte */
-    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     overflow: hidden;
     margin-top: 20px;
 }
 
-.animal-card img {
-    width: 600px; /* Largeur de l'image */
-    height: auto; /* Garder l'aspect ratio de l'image */
-}
 
 .animal-card .card-body {
     padding: 20px;
-    display: flex; /* Flexbox pour le contenu à l'intérieur */
-    flex-direction: column; /* Alignement vertical */
-    justify-content: center; /* Centrer le contenu verticalement */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
 }
 
 .animal-card h1 {
-    font-size: 2rem; /* Taille de police du titre */
+    font-size: 2rem; 
     font-weight: bold;
     color: #343a40;
 }
 
 .animal-card p {
-    font-size: 1rem; /* Taille de police de la description */
+    font-size: 1rem; 
     color: #555;
     line-height: 1.5;
 }
@@ -47,11 +42,11 @@ body {
 }
 
 .back-btn a {
-    color: #007bff; /* Couleur bleue du lien */
+    color: #007bff; 
     text-decoration: none;
     font-size: 1.2rem;
 }
 
 .back-btn a:hover {
-    text-decoration: underline; /* Soulignement au survol */
+    text-decoration: underline;
 }
