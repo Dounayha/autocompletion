@@ -1,11 +1,18 @@
 <?php
+// Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=autocompletion', 'root', '');
 
-if (isset($_GET['search'])) {
-    $search = $_GET['search'];
-    $query = $pdo->prepare("SELECT * FROM elements WHERE nom LIKE ?");
-    $query->execute(['%' . $search . '%']);
-    $resultats = $query->fetchAll(PDO::FETCH_ASSOC);
+// Initialiser l'animal à afficher
+$animal = null;
+
+if (isset($_GET['id'])) {
+    // Récupérer l'ID de l'animal sélectionné
+    $id = (int) $_GET['id'];
+
+    // Préparer et exécuter la requête pour récupérer les informations de l'animal
+    $query = $pdo->prepare("SELECT * FROM elements WHERE id = ?");
+    $query->execute([$id]);
+    $animal = $query->fetch(PDO::FETCH_ASSOC);
 }
 ?>
 
@@ -14,23 +21,30 @@ if (isset($_GET['search'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultats de recherche</title>
+    <title><?php echo $animal ? htmlspecialchars($animal['nom']) : 'Aucun animal trouvé'; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text-center">Résultats pour "<?php echo htmlspecialchars($search); ?>"</h1>
-        <ul class="list-group mt-3">
-            <?php foreach ($resultats as $resultat): ?>
+        <?php if ($animal): ?>
+            <!-- Affichage des détails de l'animal -->
+            <h1 class="text-center"><?php echo htmlspecialchars($animal['nom']); ?></h1>
+            <ul class="list-group mt-3">
                 <li class="list-group-item">
-                    <h5><?php echo htmlspecialchars($resultat['nom']); ?></h5>
-                    <p><?php echo htmlspecialchars($resultat['description']); ?></p>
-                    <img src="<?php echo htmlspecialchars($resultat['photo_url']); ?>" alt="<?php echo htmlspecialchars($resultat['nom']); ?>" style="width: 100px;">
-                    <a href="element.php?id=<?php echo $resultat['id']; ?>" class="text-decoration-none">Voir plus</a>
+                    <h5>Description</h5>
+                    <p><?php echo htmlspecialchars($animal['description']); ?></p>
                 </li>
-            <?php endforeach; ?>
-        </ul>
+                <li class="list-group-item">
+                    <img src="<?php echo htmlspecialchars($animal['photo_url']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>" style="width: 100px;">
+                </li>
+            </ul>
+        <?php else: ?>
+            <!-- Si l'animal n'existe pas ou n'a pas été trouvé -->
+            <p class="text-center">Aucun animal trouvé pour cet ID.</p>
+        <?php endif; ?>
     </div>
+
+    <!-- Inclusion de Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -15,22 +15,28 @@ if (isset($_POST['search'])) {
     $resultats_contains = $query_contains->fetchAll(PDO::FETCH_ASSOC);
 
     echo '<ul class="list-group">';
-    
+
     // Résultats exacts
     if (count($resultats_exact) > 0) {
         foreach ($resultats_exact as $resultat) {
             echo '<li class="list-group-item">';
-            echo '<a href="recherche.php?search=' . urlencode($resultat['nom']) . '" class="text-decoration-none">' . htmlspecialchars($resultat['nom']) . '</a>';
+            // Utilisation de l'ID pour rediriger vers la page de l'animal
+            echo '<a href="recherche.php?id=' . htmlspecialchars($resultat['id']) . '" class="text-decoration-none">';
+            echo htmlspecialchars($resultat['nom']);
+            echo '</a>';
             echo '</li>';
         }
         echo '<hr>';
     }
-
+    
     // Résultats contenant la recherche
     if (count($resultats_contains) > 0) {
         foreach ($resultats_contains as $resultat) {
             echo '<li class="list-group-item">';
-            echo '<a href="recherche.php?search=' . urlencode($resultat['nom']) . '" class="text-decoration-none">' . htmlspecialchars($resultat['nom']) . '</a>';
+            // Utilisation de l'ID pour rediriger vers la page de l'animal
+            echo '<a href="recherche.php?id=' . htmlspecialchars($resultat['id']) . '" class="text-decoration-none">';
+            echo htmlspecialchars($resultat['nom']);
+            echo '</a>';
             echo '</li>';
         }
     }
